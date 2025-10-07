@@ -1,9 +1,12 @@
-package pages;
+package tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import pages.RegistrationPage;
 
-public class BaseTest {
+public class BaseTest  {
+
+   public RegistrationPage registrationPage = new RegistrationPage();
 
     @BeforeAll
     static void beforeAll() {

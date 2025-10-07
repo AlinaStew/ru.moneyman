@@ -1,26 +1,24 @@
+package tests;
+
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
+import tests.BaseTest;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
-
-public class MoneyManTests {
-
-    RegistrationPage registrationPage = new RegistrationPage();
+public class MoneyManTests extends BaseTest {
 
     @Test
+    @Tag("negative")
     @DisplayName("Open registration form and enter incorrect data")
     void RegistrationTest() {
-        step("Открываем сайт", () -> {
-            registrationPage.openPage();
-        });
-
-        step("Переходим в форму входа и вводим данные", () -> {
-            $x("//a[text()='Личный кабинет']").click();
-            $x("//button[@data-test='button_switcher_login_0']").click();
-            registrationPage.setPhoneOrEmail("99999999999");
-        });
+            registrationPage.openPage()
+                    .clickPersonalAccount()
+                    .clickChangeWindow()
+                    .setPhoneOrEmail("99999999999")
+                    .setPassInput("hp121212")
+                    .clickEnterAccount();
+        }
     }
-}
