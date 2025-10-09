@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -13,12 +14,22 @@ public class MoneyManTests extends BaseTest {
     @Test
     @Tag("negative")
     @DisplayName("Open registration form and enter incorrect data")
-    void RegistrationTest() {
+    void checkRegistrationWithIncorrectPasswordTest() {
             registrationPage.openPage()
                     .clickPersonalAccount()
-                    .clickChangeWindow()
-                    .setPhoneOrEmail("99999999999")
+                    .clickLoginAndPasswordButton()
+                    .setPhoneNumber("99999999999")
                     .setPassInput("hp121212")
-                    .clickEnterAccount();
-        }
+                    .clickEnterAccountButton();
+    }
+
+
+    @Test
+    @DisplayName("Check go to gosuslugi site")
+    void checkToGosUslugiSite() {
+    gosUslugiPage.openPage()
+            .clickGosUslugiButton();
+    Assertions.assertTrue(gosUslugiPage.isGosUslugiSiteOpened(),
+                "GosUslugi site should be opened after click");
+}
     }

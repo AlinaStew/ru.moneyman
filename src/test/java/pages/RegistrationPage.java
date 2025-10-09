@@ -9,12 +9,12 @@ import io.qameta.allure.Step;
 
 public class RegistrationPage {
 
-    private final SelenideElement phoneOrEmailInput = $("#login"),
+    private final SelenideElement phoneNumberInput = $("#login"),
             passInput = $("#password"),
             titleH = $(".promo__title"),
             personalAccount = $(".header__privat"),
-            changeWindow = $x("//button[@data-test='button_switcher_login_0']"),
-            enterAccount = $x("//button[@data-test='login_enter_by_email_phone']");
+            loginAndPasswordButton = $x("//button[@data-test='button_switcher_login_0']"),
+            enterAccountButton = $x("//button[@data-test='login_enter_by_email_phone']");
 
     @Step("Cheсk H1 title")
     public RegistrationPage openPage(){
@@ -24,8 +24,8 @@ public class RegistrationPage {
     }
 
     @Step("Set number")
-    public RegistrationPage setPhoneOrEmail(String value) {
-        phoneOrEmailInput.setValue(value);
+    public RegistrationPage setPhoneNumber(String value) {
+        phoneNumberInput.setValue(value);
         return this;
     }
 
@@ -42,14 +42,14 @@ public class RegistrationPage {
     }
 
     @Step("Change window")
-    public RegistrationPage clickChangeWindow() {
-        changeWindow.click();
+    public RegistrationPage clickLoginAndPasswordButton() {
+        loginAndPasswordButton.click();
         return this;
     }
 
     @Step("Enter account")
-    public RegistrationPage clickEnterAccount() {
-        enterAccount.click();
+    public RegistrationPage clickEnterAccountButton() {
+        enterAccountButton.click();
         return this;
     }
 }
