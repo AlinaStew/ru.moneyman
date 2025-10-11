@@ -1,20 +1,18 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.GosUslugiPage;
-import pages.RegistrationPage;
+import pages.HeaderBarPage;
+import pages.MainPage;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest  {
 
-   public RegistrationPage registrationPage = new RegistrationPage();
-   public GosUslugiPage gosUslugiPage = new GosUslugiPage();
+   public MainPage mainPage = new MainPage();
+    public HeaderBarPage headerBarPage = new HeaderBarPage();
 
     @BeforeAll
     static void beforeAll() {
