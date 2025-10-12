@@ -3,8 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.HeaderBarPage;
-import pages.MainPage;
+import pages.*;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.open;
@@ -13,6 +12,9 @@ public class BaseTest  {
 
    public MainPage mainPage = new MainPage();
     public HeaderBarPage headerBarPage = new HeaderBarPage();
+    public FaqContactPage faqContactPage = new FaqContactPage();
+    public FirstZaymWithoutPercentPage firstZaymWithoutPercentPage = new FirstZaymWithoutPercentPage();
+    public ClientAreaPage clientAreaPage = new ClientAreaPage();
 
     @BeforeAll
     static void beforeAll() {

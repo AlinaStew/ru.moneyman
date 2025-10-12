@@ -10,50 +10,56 @@ import tests.BaseTest;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static utils.TestData.*;
 
 public class MoneyManTests extends BaseTest {
 
     @Test
     @Tag("negative")
-    @DisplayName("Open registration form and enter incorrect data")
+    @DisplayName("Открыть сайт, нажать 'Личный кабинет' и ввести неправильный логин и пароль")
     public void checkRegistrationWithIncorrectPasswordTest() {
-            mainPage.openPage()
-                    .clickPersonalAccount()
+            mainPage.clickPersonalAccount()
                     .clickLoginAndPasswordButton()
-                    .setPhoneNumber("99999999999")
-                    .setPassInput("hp121212")
+                    .setPhoneNumber(INVALID_PHONE)
+                    .setPassInput(INVALID_PASSWORD)
                     .clickEnterAccountButton();
-    }
+        }
 
 
     @Test
-    @DisplayName("Check go to gosuslugi site")
+    @DisplayName("Нажать кнопку Гоуслуги, проверить переход на сайт Госуслуги")
     public void checkToGosUslugiSite() {
-        mainPage.openPage()
-                .clickGosUslugiButton();
+        mainPage.clickGosUslugiButton();
         sleep(5000);
         Assertions.assertTrue(url().contains("esia.gosuslugi.ru"),
                 "Должен открыться сайт госуслуг. Фактический URL: " + url());
-    }
+        }
 
     @Test
-    @DisplayName("Header bar Вопросы и ответы, click Связаться с нами and find form Оставить запрос")
-    public void findFormOstavitZapros() {
-        mainPage.openPage();
+    @DisplayName("Нажать 'Вопросы и ответы', 'Связаться с нами' и проверить наличие формы для заявки")
+    public void findFormOstavitZaprosAfterClickSvyazatsyaSNami() {
 
-        headerBarPage.hoverOnFaqLink();
-        headerBarPage.clickOnContactLink();
-        headerBarPage.verifyFormTitleText();
-    }
+        faqContactPage.clickOnContactLink()
+                .verifyFormTitleText();
+        }
 
     @Test
-    @DisplayName("Check Contact Form from Tarif Start should be visible")
+    @DisplayName("Нажать 'Получить деньги', проверить открытие формы заявки ")
+    public void findFormOstavitZaprosAfterClickPoluchitDengi() {
+
+        mainPage.clickGetMoneyButton();
+
+        clientAreaPage.checkContactForm();
+        }
+
+    @Test
+    @DisplayName("Нажать 'Продукты', 'Первый заем без процентов', выбрать тариф 'Старт', нажать 'Оформить' и проверить наличие формы для заявки")
     public void checkContactFormOfStartTarif() {
-        mainPage.openPage();
 
-        headerBarPage.hoverOnProductsLink();
         headerBarPage.clickOnFirstZaymWithoutPercent();
-        headerBarPage.clickOnTarifStartOformit();
-        headerBarPage.checkContactForm();
-    }
+
+        firstZaymWithoutPercentPage.clickOnTarifStartOformit();
+
+        clientAreaPage.checkContactForm();
+        }
     }
