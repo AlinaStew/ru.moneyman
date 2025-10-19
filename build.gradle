@@ -1,5 +1,6 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group = 'org.example'
@@ -9,13 +10,37 @@ repositories {
     mavenCentral()
 }
 
+def allureVersion = "2.21.0",
+    selenideVersion = "7.11.0"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'com.codeborne:selenide:7.11.0'
+    testImplementation "io.qameta.allure:allure-selenide:$allureVersion"
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register("negative", Test) {
+    useJUnitPlatform {
+        includeTags "negative"
+    }
 }
