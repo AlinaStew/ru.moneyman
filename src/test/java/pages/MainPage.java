@@ -20,7 +20,7 @@ public class MainPage {
             getMoneyButton = $x("//a[@data-test='calculator_submit']");
 
     @Step("Проверка открытия страницы по заголовку")
-    public MainPage openPage(){
+    public MainPage openPage() {
         open(baseUrl);
         titleH.shouldHave(matchText("^Первый.*"));
         return this;
@@ -57,7 +57,7 @@ public class MainPage {
     }
 
     @Step("Клик по кнопке 'Госуслуги' и проверка перехода на сайт 'Госуслуги'")
-    public void clickGosUslugiButton(){
+    public void clickGosUslugiButton() {
         gosUslugiButton.click();
         $x("//button[text()='Понятно']").click();
     }
