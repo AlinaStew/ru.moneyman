@@ -29,7 +29,7 @@ public class MoneyManTests extends BaseTest {
     @DisplayName("Нажать кнопку Гоуслуги, проверить переход на сайт Госуслуги")
     public void checkToGosUslugiSite() {
         mainPage.clickGosUslugiButton();
-        sleep(5000);
+        sleep(6000);
         Assertions.assertTrue(url().contains("esia.gosuslugi.ru"),
                 "Должен открыться сайт госуслуг. Фактический URL: " + url());
         }
