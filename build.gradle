@@ -39,8 +39,20 @@ test {
     useJUnitPlatform()
 }
 
+tasks.register("smoke", Test) {
+    useJUnitPlatform {
+        includeTags "smoke"
+    }
+}
+
 tasks.register("negative", Test) {
     useJUnitPlatform {
         includeTags "negative"
+    }
+}
+
+tasks.register("regression", Test) {
+    useJUnitPlatform {
+        includeTags "regression"
     }
 }
