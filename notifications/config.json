@@ -1,0 +1,16 @@
+{
+  "base": {
+    "project": "MoneyManTests",
+    "environment": "some env",
+    "comment": "some comment",
+    "reportLink": "",
+    "language": "en",
+    "allureFolder": "allure-report",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "8465052347:AAFen5olOX2l8vsHJfecca5euigVeCfwY2U",
+    "chat": "-1003123232563",
+    "replyTo": ""
+  }
+}
