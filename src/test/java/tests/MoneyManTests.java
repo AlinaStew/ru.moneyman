@@ -26,6 +26,7 @@ public class MoneyManTests extends BaseTest {
         }
 
     @Test
+    @Tag("smoke")
     @DisplayName("Нажать кнопку Гоуслуги, проверить переход на сайт Госуслуги")
     public void checkToGosUslugiSite() {
         mainPage.clickGosUslugiButton();
@@ -35,6 +36,8 @@ public class MoneyManTests extends BaseTest {
         }
 
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     @DisplayName("Нажать 'Вопросы и ответы', 'Связаться с нами' и проверить наличие формы для заявки")
     public void findFormOstavitZaprosAfterClickSvyazatsyaSNami() {
         faqContactPage.clickOnContactLink()
@@ -42,6 +45,8 @@ public class MoneyManTests extends BaseTest {
         }
 
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     @DisplayName("Нажать 'Получить деньги', проверить открытие формы заявки ")
     public void findFormOstavitZaprosAfterClickPoluchitDengi() {
         mainPage.clickGetMoneyButton();
@@ -50,6 +55,8 @@ public class MoneyManTests extends BaseTest {
         }
 
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     @DisplayName("Нажать 'Продукты', 'Первый заем без процентов', выбрать тариф 'Старт', нажать 'Оформить' и проверить наличие формы для заявки")
     public void checkContactFormOfStartTarif() {
         headerBarPage.clickOnFirstZaymWithoutPercent();
